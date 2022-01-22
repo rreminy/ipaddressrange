@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.4;net45</TargetFrameworks>
+    <TargetFrameworks>net5</TargetFrameworks>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
@@ -72,15 +72,7 @@ $(Description)]]>
       <Output TaskParameter="AbsolutePaths" PropertyName="NuspecFileAbsolutePath" />
     </ConvertToAbsolutePath>
     <Message Text="PackProjectInputFile=[$(PackProjectInputFile)]" />
-    <PackTask PackItem="$(PackProjectInputFile)"
-              PackageOutputPath="$(PackageOutputAbsolutePath)"
-              NuspecOutputPath="$(NuspecOutputAbsolutePath)"
-              NuspecFile="$(NuspecFileAbsolutePath)"
-              NuspecBasePath="$(NuspecBasePath)"
-              NuspecProperties="$(NuspecProperties)"
-              SymbolPackageFormat="snupkg"
-              RestoreOutputPath="$(RestoreOutputAbsolutePath)"
-    />
+    <PackTask PackItem="$(PackProjectInputFile)" PackageOutputPath="$(PackageOutputAbsolutePath)" NuspecOutputPath="$(NuspecOutputAbsolutePath)" NuspecFile="$(NuspecFileAbsolutePath)" NuspecBasePath="$(NuspecBasePath)" NuspecProperties="$(NuspecProperties)" SymbolPackageFormat="snupkg" RestoreOutputPath="$(RestoreOutputAbsolutePath)" />
   </Target>
 
   <Target Name="PreparePackageReleaseNoteFromFile" BeforeTargets="GenerateNuspec">
